@@ -8,6 +8,7 @@ game.resources = [
    {name: "player", type: "image", src: "data/img/orcSpear.png"},
    {name: "tower", type: "image", src: "data/img/tower_round.svg.png"},
    {name: "title-screen", type: "image", src: "data/img/title.png"},
+   {name: "creep1", type: "image", src: "data/img/brainmonster.png"},
    
       /* Atlases 
      * @example
@@ -25,6 +26,7 @@ game.resources = [
      * {name: "example_bgm", type: "audio", src: "data/bgm/"},
      */
     {name: "Gary", type:"audio", src:"data/bgm/"},
+    {name: "go", type:"audio", src:"data/bgm/"},
 
     /* Sound effects. 
      * @example
