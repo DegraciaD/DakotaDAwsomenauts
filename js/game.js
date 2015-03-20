@@ -15,8 +15,16 @@ score: 0,
         creepAttackTimer: 1000,
         playerMoveSpeed: 5,
         creepMoveSpeed: 5,
-        gameMananger: "",
-        player: ""
+        gameTimerMananger: "",
+        HeroDeathManger: "",
+        player: "",
+        exp: 0,
+        gold: 0,
+        exp1: 0,
+        exp2: 0,
+        exp3: 0,
+        exp4: 0,
+        win: ""
     },
         // Run on page load.
         "onload": function () {
@@ -32,6 +40,8 @@ score: 0,
                     me.plugin.register.defer(this, debugPanel, "debug");
                 });
             }
+            
+            me.save.add({exp: 0, exp1: 0, exp2: 0,exp3: 0, exp4:0})
 
             // Initialize the audio.
             me.audio.init("mp3,ogg");
@@ -51,7 +61,9 @@ score: 0,
             me.pool.register("PlayerBase", game.PlayerbaseEntity);
             me.pool.register("EnemyBase", game.EnemybaseEntity);
             me.pool.register("EnemyCreep", game.EnemyCreep, true);
-            me.pool.register("GameManager", game.GameManager);
+            me.pool.register("GameTimerManager", game.GameTimerManager);
+            me.pool.register("HeroDeathManger", game.HeroDeathManger);
+            me.pool.register("ExperienceManager", game.ExperienceManager);
 
 
 
