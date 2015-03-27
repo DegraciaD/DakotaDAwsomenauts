@@ -3,15 +3,12 @@ game.PlayScreen = me.ScreenObject.extend({
      *  action to perform on state change
      */
     onResetEvent: function () {
-     me.audio.playTrack("go");  
+    me.audio.playTrack("go");  
  
 
         // reset the score
         game.data.score = 0;
-
         me.levelDirector.loadLevel("level01");
-
-
         this.resetPlayer(0,420);
 
 
@@ -21,9 +18,16 @@ game.PlayScreen = me.ScreenObject.extend({
         var HeroDeathManger = me.pool.pull("HeroDeathManger", 0, 0, {});
         me.game.world.addChild(HeroDeathManger, 0);
         
-        var experienceManager  = me.pool.pull("ExperienceManager", 0, 0, {});
-        me.game.world.addChild(experienceManager , 0);
+         var experienceManager = me.pool.pull("ExperienceManager", 0, 0, {});
+         me.game.world.addChild(experienceManager, 0);
+        
+         var SpendGold  = me.pool.pull("SpendGold", 0, 0, {});
+         me.game.world.addChild(SpendGold, 0);
 
+        me.input.bindKey(me.input.KEY.ENTER, "buy");
+        me.input.bindKey(me.input.KEY.D, "skill1");
+        me.input.bindKey(me.input.KEY.A, "skill2");
+        me.input.bindKey(me.input.KEY.W, "skill3");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.LEFT, "left");
         me.input.bindKey(me.input.KEY.SPACE, "jump", true);

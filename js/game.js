@@ -5,9 +5,9 @@ var game = {
 data: {
 // score
 score: 0,
-        enemyBaseHealth: 10,
-        playerBaseHealth: 10,
-        enemyCreepHealth: 10,
+        enemyBaseHealth: 1,
+        playerBaseHealth: 1,
+        enemyCreepHealth: 3,
         playerHealth: 10,
         enemyCreepAttack: 1,
         playerAttack: 1,
@@ -24,7 +24,9 @@ score: 0,
         exp2: 0,
         exp3: 0,
         exp4: 0,
-        win: ""
+        win: "",
+        pausePos: "",
+        buyscreen: ""
     },
         // Run on page load.
         "onload": function () {
@@ -41,7 +43,10 @@ score: 0,
                 });
             }
             
-            me.save.add({exp: 0, exp1: 0, exp2: 0,exp3: 0, exp4:0})
+            me.save.add({exp: 0, exp1: 0, exp2: 0,exp3: 0, exp4: 0});
+            
+            me.state.SPENDEXP = 112;
+            
 
             // Initialize the audio.
             me.audio.init("mp3,ogg");
@@ -64,12 +69,14 @@ score: 0,
             me.pool.register("GameTimerManager", game.GameTimerManager);
             me.pool.register("HeroDeathManger", game.HeroDeathManger);
             me.pool.register("ExperienceManager", game.ExperienceManager);
-
+            me.pool.register("SpendGold", game.SpendGold);
 
 
             me.state.set(me.state.MENU, new game.TitleScreen());
             me.state.set(me.state.PLAY, new game.PlayScreen());
-
+            me.state.set(me.state.SPENDEXP, new game.SpendExp());
+            
+            
             // Start the game.
             me.state.change(me.state.MENU);
             }

@@ -3,7 +3,7 @@ game.TitleScreen = me.ScreenObject.extend({
 	 *  action to perform on state change
 	 */
 	onResetEvent: function() {	
-		me.game.world.addChild(new me.Sprite(0, 0,me.loader.getImage("title-screen")), -10);
+		me.game.world.addChild(new me.Sprite(0, 0,me.loader.getImage('title-screen')), -10);
                 
                 
                 me.game.world.addChild(new(me.Renderable.extend({
@@ -49,8 +49,14 @@ game.TitleScreen = me.ScreenObject.extend({
                     },
                     
                     newGame: function(){
+                        console.log(me.save.exp);
+                        game.data.exp = me.save.exp;
+                        game.data.exp1 = me.save.exp1;
+                        game.data.exp2 = me.save.exp2;
+                        game.data.exp3 = me.save.exp3;
+                        game.data.exp4 = me.save.exp4;    
                        me.input.releasePointerEvent('pointerdown', this);
-                       me.state.change(me.state.PLAY);
+                       me.state.change(me.state.SPENDEXP);
                     }
                     
                })));

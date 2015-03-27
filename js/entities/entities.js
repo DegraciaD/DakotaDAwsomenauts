@@ -127,7 +127,6 @@
 
         var ydif = this.pos.y - response.b.pos.y;
                 var xdif = this.pos.x - response.b.pos.x;
-                console.log("xdif" + xdif + "ydif" + ydif);
                 if (ydif < - 40 && xdif < 70 && xdif > - 35) {
         this.body.falling = false;
                 this.body.vel.y = - 1;

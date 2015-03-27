@@ -9,6 +9,8 @@ game.resources = [
    {name: "tower", type: "image", src: "data/img/tower_round.svg.png"},
    {name: "title-screen", type: "image", src: "data/img/title.png"},
    {name: "creep1", type: "image", src: "data/img/brainmonster.png"},
+   {name: "exp-screen", type: "image", src: "data/img/loadpic.png"},
+   {name: "gold-screen", type: "image", src: "data/img/spend.png"},
    
       /* Atlases 
      * @example
@@ -20,13 +22,14 @@ game.resources = [
      * {name: "example01", type: "tmx", src: "data/map/example01.tmx"},
      * {name: "example01", type: "tmx", src: "data/map/example01.json"},
      */
-     {name: "level01", type: "tmx", src: "data/map/test.tmx"},
+    {name: "level01", type: "tmx", src: "data/map/test.tmx"},
+    //{name: "level02", type: "tmx", src: "data/map/test2.tmx"},
+
     /* Background music. 
      * @example
      * {name: "example_bgm", type: "audio", src: "data/bgm/"},
      */
-    {name: "Gary", type:"audio", src:"data/bgm/"},
-    {name: "go", type:"audio", src:"data/bgm/"},
+    //{name: "go", type:"audio", src:"data/bgm/"},
 
     /* Sound effects. 
      * @example
