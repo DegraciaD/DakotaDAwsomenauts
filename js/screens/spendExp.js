@@ -9,13 +9,13 @@ game.SpendExp = me.ScreenObject.extend({
 			me.input.bindKey(me.input.KEY.F2, "F2");
 			me.input.bindKey(me.input.KEY.F3, "F3");
 			me.input.bindKey(me.input.KEY.F4, "F4");
-			me.input.bindKey(me.input.KEY.F5, "F6");
+			me.input.bindKey(me.input.KEY.F6, "F6");
 			var exp1cost = ((game.data.exp1 + 1) + 10);
 
 			me.game.world.addChild(new (me.Renderable.extend({
 				init: function() {
 					this._super(me.Renderable, 'init', [10, 10, 300, 50]); 
-					this.font = new me.Font("Times New Roman", 45, "white");
+					this.font = new me.Font("Lucida Handwriting", 45, "blue");
 				},
 
 				draw: function(renderer){
@@ -42,7 +42,7 @@ game.SpendExp = me.ScreenObject.extend({
 				}else if(action === "F3"){
 
 				}else if(action === "F4"){
-
+                                 //if you press F6 you skip exp screen when you press continue
 				}else if(action === "F6"){
 					me.state.change(me.state.PLAY);
 				}
@@ -57,7 +57,7 @@ game.SpendExp = me.ScreenObject.extend({
 			me.input.bindKey(me.input.KEY.F2, "F2");
 			me.input.bindKey(me.input.KEY.F3, "F3");
 			me.input.bindKey(me.input.KEY.F4, "F4");
-			me.input.bindKey(me.input.KEY.F5, "F6");
+			me.input.bindKey(me.input.KEY.F6, "F6");
 			me.event.unsubscribe(this.handler);
 		}
 });

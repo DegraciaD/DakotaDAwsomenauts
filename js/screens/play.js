@@ -32,6 +32,7 @@ game.PlayScreen = me.ScreenObject.extend({
         me.input.bindKey(me.input.KEY.LEFT, "left");
         me.input.bindKey(me.input.KEY.SPACE, "jump", true);
         me.input.bindKey(me.input.KEY.S, "Attack");
+        me.input.bindKey(me.input.KEY.c, "spearthrow");
 
         // add our HUD to the game world
         this.HUD = new game.HUD.Container();

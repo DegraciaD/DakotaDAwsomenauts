@@ -24,6 +24,7 @@
         setPlayerTimers: function () {
         this.now = new Date().getTime();
                 this.lastHit = this.now;
+                this.lastSpear = this.now;
                 this.lastAttack = new Date().getTime(); //Haven't used this
         },
         setAttributes: function () {
@@ -46,6 +47,7 @@
         this.now = new Date().getTime();
                 this.dead = this.checkIfDead();
                 this.checkKeyPressesAndMove();
+                this.checkAbilityKeys();
                 this.setAnimation();
                 me.collision.check(this, true, this.collideHandler.bind(this), true);
                 this.body.update(delta);
@@ -58,6 +60,7 @@
         }
         return false;
         },
+        
         checkKeyPressesAndMove: function () {
         if (me.input.isKeyPressed("right")) {
         this.moveRight();
@@ -72,6 +75,7 @@
 
         this.attacking = me.input.isKeyPressed("Attack");
         },
+        
         moveRight: function () {
         //sets the position of my x by adding the velocity defined above in 
         //setVelocity() and mutiplying it by me.timer.tick.
@@ -79,16 +83,39 @@
         this.facing = "right";
                 this.renderable.flipX(true);
                 this.body.vel.x += this.body.accel.x * me.timer.tick;
+                
         },
+        
         moveLeft: function () {
         this.facing = "left";
                 this.renderable.flipX(false);
                 this.body.vel.x -= this.body.accel.x * me.timer.tick;
         },
+        
         jump: function () {
-        this.body.vel.y -= this.body.accel.y * me.timer.tick;
+        this.body.vel.y -= this.body.maxVel.y * me.timer.tick;
                 me.audio.play("21");
         },
+        
+        checkAbilityKeys: function(){
+            if(me.input.isKeyPressed("skill1")){
+                //this.speedBurst();
+            }else if(me.input.isKeyPressed("skill2")){
+                //this.eatCreep();
+            }
+            else if(me.input.isKeyPressed("skill3")){
+                this.throwSpear();
+            }
+        },
+        
+        throwSpear: function(){
+            if((this.lastSpear-this.no)>= game.data.spearTimer && game.data.ability3 >= 0){                        
+            this.lastSpear = this.now;
+            var spear = me.pool.pull("throwSpear", this.pos.x, this.pos.y, {}, this.facing);
+            me.game.world.addChild(spear, 10);
+           }
+        },
+        
         setAnimation: function () {
         if (this.attacking) {
         if (!this.renderable.isCurrentAnimation("Attack")) {
@@ -99,7 +126,7 @@
                 //from the first animation, not wherever we left off when we
                 //switched to another animmation
                 this.renderable.setAnimationFrame();
-                me.audio.play("21");
+                me.audio.play("Hit_Hurt34");
         }
         }
         else if (this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("Attack")) {
