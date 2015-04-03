@@ -3,7 +3,7 @@ game.PlayScreen = me.ScreenObject.extend({
      *  action to perform on state change
      */
     onResetEvent: function () {
-    me.audio.playTrack("go");  
+    //me.audio.playTrack("go");  
  
 
         // reset the score
